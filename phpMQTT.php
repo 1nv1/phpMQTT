@@ -291,7 +291,7 @@ class phpMQTT
      *
      * @return string
      */
-    public function subscribeAndWaitForMessage($topic, $qos): string
+    public function subscribeAndWaitForMessage($topic, $qos)
     {
         $this->subscribe(
             [
@@ -387,7 +387,7 @@ class phpMQTT
      * @param int $qos
      * @param bool $retain
      */
-    public function publish($topic, $content, $qos = 0, $retain = false): void
+    public function publish($topic, $content, $qos = 0, $retain = false)
     {
         $i = 0;
         $buffer = '';
@@ -597,7 +597,7 @@ class phpMQTT
      *
      * @return string
      */
-    protected function setmsglength($len): string
+    protected function setmsglength($len)
     {
         $string = '';
         do {
@@ -618,7 +618,7 @@ class phpMQTT
      *
      * @return string
      */
-    protected function strwritestring($str, &$i): string
+    protected function strwritestring($str, &$i)
     {
         $len = strlen($str);
         $msb = $len >> 8;
@@ -662,7 +662,7 @@ class phpMQTT
     /**
      * @param string $message
      */
-    protected function _errorMessage(string $message): void
+    protected function _errorMessage(string $message)
     {
         error_log('Error:' . $message);
     }
