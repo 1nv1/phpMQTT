@@ -386,6 +386,7 @@ class phpMQTT
      * @param $content
      * @param int $qos
      * @param bool $retain
+     * @return bool True if success or False in other case
      */
     public function publish($topic, $content, $qos = 0, $retain = false)
     {
@@ -418,7 +419,7 @@ class phpMQTT
         $head .= $this->setmsglength($i);
 
         fwrite($this->socket, $head, strlen($head));
-        $this->_fwrite($buffer);
+        return($this->_fwrite($buffer));
     }
 
     /**
@@ -431,13 +432,15 @@ class phpMQTT
     protected function _fwrite($buffer)
     {
         $buffer_length = strlen($buffer);
-        for ($written = 0; $written < $buffer_length; $written += $fwrite) {
-            $fwrite = fwrite($this->socket, substr($buffer, $written));
-            if ($fwrite === false) {
-                return false;
+        for ($written = 0; $written < $buffer_length; $written += $fwrite)
+        {
+            if (!$fwrite = fwrite($this->socket, substr($buffer, $written)))
+            {
+                if ($fwrite === false || $fwrite <= 0)
+                    return(false);
             }
         }
-        return $buffer_length;
+        return(true);
     }
 
     /**
