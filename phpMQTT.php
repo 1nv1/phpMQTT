@@ -432,15 +432,12 @@ class phpMQTT
     protected function _fwrite($buffer)
     {
         $buffer_length = strlen($buffer);
-        for ($written = 0; $written < $buffer_length; $written += $fwrite)
-        {
+        $ret = true;
+        for ($written = 0; $written < $buffer_length && $ret; $written += $fwrite) {
             if (!$fwrite = fwrite($this->socket, substr($buffer, $written)))
-            {
-                if ($fwrite === false || $fwrite <= 0)
-                    return(false);
-            }
+                $ret = false;
         }
-        return(true);
+        return($ret);
     }
 
     /**
