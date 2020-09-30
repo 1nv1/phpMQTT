@@ -1,15 +1,9 @@
-**2020 Update**
-I am restarting the project so watch this space
+# phpMQTT
 
+## Brief
 
-Blue Rhinos Consulting
-Andrew Milsted | andrew@bluerhinos.co.uk | http://www.bluerhinos.co.uk | @bluerhinos
+The goal of this fork is give PHP 7.x support and improved the handle errors.
 
-A simple php class to connect/publish/subscribe to an MQTT broker
+## Original work
 
-Documentation: Coming Soon
-Source: http://github.com/bluerhinos/phpMQTT
-
-To install via Composer
------------------------
-`composer require bluerhinos/phpmqtt=@dev`
+You can access to original work at http://github.com/bluerhinos/phpMQTT
